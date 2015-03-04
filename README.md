@@ -5,4 +5,4 @@ VectorDrawable，AnimatedVectorDrawable 和 PathInterpolator 的兼容库。API 
 
 A backport of VectorDrawable, AnimatedVectorDrawable and PathInterpolator. It might work in API 14+.
 
-Note: `R.styleable.PropertyAnimator_pathData`, `R.styleable.PropertyAnimator_propertyXName` and `R.styleable.PropertyAnimator_propertyYName` is unavailable. `PathInterpolator(Path path)` and `R.styleable.PathInterpolator_pathData` is unavailable。
+Note: `R.styleable.PropertyAnimator_pathData`, `R.styleable.PropertyAnimator_propertyXName` and `R.styleable.PropertyAnimator_propertyYName` is unavailable. `PathInterpolator(Path path)` and `R.styleable.PathInterpolator_pathData` is unavailable.
