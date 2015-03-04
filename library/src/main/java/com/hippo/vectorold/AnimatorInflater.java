@@ -31,7 +31,6 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.util.Xml;
 import android.view.InflateException;
-import android.view.animation.AnimationUtils;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -596,7 +595,7 @@ public class AnimatorInflater {
         final int resID =
                 arrayAnimator.getResourceId(R.styleable.Animator_interpolator, 0);
         if (resID > 0) {
-            anim.setInterpolator(AnimationUtils.loadInterpolator(context, resID));
+            anim.setInterpolator(InterpolatorInflater.loadInterpolator(context, resID));
         }
 
         arrayAnimator.recycle();
