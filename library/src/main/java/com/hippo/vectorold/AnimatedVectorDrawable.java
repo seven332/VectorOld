@@ -248,7 +248,7 @@ public class AnimatedVectorDrawable extends Drawable implements Animatable {
                     int drawableRes = a.getResourceId(
                             R.styleable.AnimatedVectorDrawable_drawable, 0);
                     if (drawableRes != 0) {
-                        VectorDrawable vectorDrawable =(VectorDrawable) VectorResources.getVectorResources(context).getDrawable(
+                        VectorDrawable vectorDrawable =(VectorDrawable) res.getDrawable(
                                 drawableRes).mutate();
                         vectorDrawable.setAllowCaching(false);
                         pathErrorScale = vectorDrawable.getPixelSize();

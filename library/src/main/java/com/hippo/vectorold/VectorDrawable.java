@@ -176,7 +176,7 @@ import java.util.Stack;
  * </pre></li>
  */
 
-class VectorDrawable extends Drawable {
+public class VectorDrawable extends Drawable {
     private static final String LOGTAG = VectorDrawable.class.getSimpleName();
 
     private static final String SHAPE_CLIP_PATH = "clip-path";
