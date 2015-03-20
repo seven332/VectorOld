@@ -1,0 +1,7 @@
+<resources>
+
+    <!-- Progress Bar -->
+    <style name="ProgressBar" parent="android:Widget.Material.ProgressBar">
+    </style>
+
+</resources>

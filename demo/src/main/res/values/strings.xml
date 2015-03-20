@@ -1,6 +1,15 @@
 <resources>
-    <string name="app_name">VectorOld</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">VectorOld Demo</string>
+
+    <string name="activity_progress">progress</string>
+
+      <string name="path_face_mouth_sad">
+    M 30,75
+    Q 50,55 70,75
+  </string>
+  <string name="path_face_mouth_happy">
+    M 30,65
+    Q 50,85 70,65
+  </string>
 </resources>
