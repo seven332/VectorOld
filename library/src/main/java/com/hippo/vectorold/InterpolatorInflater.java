@@ -24,8 +24,6 @@ import java.io.IOException;
 
 public class InterpolatorInflater {
 
-    private static final boolean USE_CUSTOM_PATH_INTERPOLATOR = Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP;
-
     /**
      * Loads an {@link Interpolator} object from a resource
      *
@@ -95,8 +93,11 @@ public class InterpolatorInflater {
             } else if (name.equals("bounceInterpolator")) {
                 interpolator = new BounceInterpolator();
             } else if (name.equals("pathInterpolator")) {
-                interpolator = USE_CUSTOM_PATH_INTERPOLATOR ? new PathInterpolator(context, attrs) :
-                        new android.view.animation.PathInterpolator(context, attrs);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                    interpolator = new PathInterpolator(context, attrs);
+                } else {
+                    interpolator = new android.view.animation.PathInterpolator(context, attrs);
+                }
             } else {
                 throw new RuntimeException("Unknown interpolator name: " + parser.getName());
             }
