@@ -4,4 +4,10 @@
     <style name="ProgressBar" parent="android:Widget.Material.ProgressBar">
     </style>
 
+    <style name="ProgressBar.Small" parent="android:Widget.Material.ProgressBar.Small">
+    </style>
+
+    <style name="ProgressBar.Large" parent="android:Widget.Material.ProgressBar.Large">
+    </style>
+
 </resources>

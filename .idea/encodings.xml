@@ -2,8 +2,8 @@
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/library/src/main/java/android/content/res/VectorResources.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/library/src/main/java/com/hippo/vectorold/PathParser.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/library/src/main/java/com/hippo/vectorold/VectorDrawable.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/com/hippo/vectorold/drawable/VectorDrawable.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/com/hippo/vectorold/util/PathParser.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

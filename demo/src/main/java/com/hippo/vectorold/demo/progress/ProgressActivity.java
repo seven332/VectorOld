@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
-import com.hippo.vectorold.VectorContext;
+import com.hippo.vectorold.content.VectorContext;
 import com.hippo.vectorold.demo.R;
 
 public class ProgressActivity extends ActionBarActivity {

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.hippo.vectorold;
+package com.hippo.vectorold.animation;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -22,6 +22,9 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.InflateException;
 import android.view.animation.Interpolator;
+
+import com.hippo.vectorold.R;
+import com.hippo.vectorold.util.PiPathParser;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -107,7 +110,7 @@ public class PathInterpolator implements Interpolator {
         // will be all coming from pathData.
         if (a.hasValue(R.styleable.PathInterpolator_pathData)) {
             String pathData = a.getString(R.styleable.PathInterpolator_pathData);
-            Path path = IpPathParser.createPathFromPathData(pathData);
+            Path path = PiPathParser.createPathFromPathData(pathData);
             if (path == null) {
                 throw new InflateException("The path is null, which is created"
                         + " from " + pathData);
@@ -336,8 +339,6 @@ public class PathInterpolator implements Interpolator {
 
 
     public static class Path {
-
-        private static final float[] DEFAULT_APPROXIMATE = {0f, 0f, 0f, 1f, 1f, 1f};
 
         private List<PathAction> mActionList = new LinkedList<>();
 

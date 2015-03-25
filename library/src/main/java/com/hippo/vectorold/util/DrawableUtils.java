@@ -1,4 +1,4 @@
-package com.hippo.vectorold;
+package com.hippo.vectorold.util;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;

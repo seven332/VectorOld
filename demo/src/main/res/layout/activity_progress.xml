@@ -6,8 +6,28 @@
     android:layout_height="match_parent">
 
     <ProgressBar
+        style="@style/ProgressBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ProgressBar
         style="@style/ProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <ProgressBar
+        style="@style/ProgressBar.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lollipop 以下用的是兼容库，Lollipop 以及以上用的是 android:Widget.Material.ProgressBar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Use backport for pre-Lollipop，Use android:Widget.Material.ProgressBar for Lollipop"/>
 
 </LinearLayout>

@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.hippo.vectorold.VectorContext;
+import com.hippo.vectorold.content.VectorContext;
 import com.hippo.vectorold.demo.progress.ProgressActivity;
 
 public class MainActivity extends ActionBarActivity {

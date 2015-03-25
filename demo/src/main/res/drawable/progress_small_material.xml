@@ -16,7 +16,7 @@
 <!--suppress AndroidDomInspection -->
 <animated-vector
     xmlns:auto="http://schemas.android.com/apk/res-auto"
-    auto:drawable="@drawable/vector_drawable_progress_bar_medium" >
+    auto:drawable="@drawable/vector_drawable_progress_bar_small" >
 
     <target
         auto:name="progressBar"

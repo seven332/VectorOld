@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.hippo.vectorold;
+package com.hippo.vectorold.drawable;
 
 import android.animation.Animator;
 import android.content.Context;
@@ -28,6 +28,9 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.util.ArrayMap;
 import android.util.AttributeSet;
 import android.util.Log;
+
+import com.hippo.vectorold.animation.AnimatorInflater;
+import com.hippo.vectorold.R;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;

@@ -12,9 +12,11 @@
  * the License.
  */
 
-package com.hippo.vectorold;
+package com.hippo.vectorold.util;
 
 import android.util.Log;
+
+import com.hippo.vectorold.animation.PathInterpolator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,8 +24,8 @@ import java.util.Arrays;
 /**
  * @hide
  */
-public class IpPathParser {
-    static final String LOGTAG = IpPathParser.class.getSimpleName();
+public class PiPathParser {
+    static final String LOGTAG = PiPathParser.class.getSimpleName();
 
     /**
      * @param pathData The string representing a path, the same as "d" string in svg file.

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.hippo.vectorold;
+package com.hippo.vectorold.animation;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -31,6 +31,9 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.util.Xml;
 import android.view.InflateException;
+
+import com.hippo.vectorold.R;
+import com.hippo.vectorold.util.PathParser;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;

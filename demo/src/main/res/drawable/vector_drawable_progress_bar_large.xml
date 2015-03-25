@@ -16,8 +16,8 @@
 <vector
     xmlns:auto="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    auto:height="48dp"
-    auto:width="48dp"
+    auto:height="76dp"
+    auto:width="76dp"
     auto:viewportHeight="48"
     auto:viewportWidth="48"
     auto:tint="@color/theme_accent"
@@ -26,7 +26,7 @@
     <group
         auto:name="root"
         auto:translateX="24.0"
-        auto:translateY="24.0" >
+        auto:translateY="24.0">
 
         <path
             auto:name="progressBar"

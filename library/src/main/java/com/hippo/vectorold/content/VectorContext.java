@@ -1,4 +1,4 @@
-package com.hippo.vectorold;
+package com.hippo.vectorold.content;
 
 import android.content.Context;
 import android.content.ContextWrapper;
