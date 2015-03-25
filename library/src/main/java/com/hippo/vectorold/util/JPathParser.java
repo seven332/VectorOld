@@ -16,7 +16,7 @@ package com.hippo.vectorold.util;
 
 import android.util.Log;
 
-import com.hippo.vectorold.animation.PathInterpolator;
+import com.hippo.vectorold.animation.JPath;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,15 +24,15 @@ import java.util.Arrays;
 /**
  * @hide
  */
-public class PiPathParser {
-    static final String LOGTAG = PiPathParser.class.getSimpleName();
+public class JPathParser {
+    static final String LOGTAG = JPathParser.class.getSimpleName();
 
     /**
      * @param pathData The string representing a path, the same as "d" string in svg file.
      * @return the generated Path object.
      */
-    public static PathInterpolator.Path createPathFromPathData(String pathData) {
-        PathInterpolator.Path path = new PathInterpolator.Path();
+    public static JPath createPathFromPathData(String pathData) {
+        JPath path = new JPath();
         PathDataNode[] nodes = createNodesFromPathData(pathData);
         if (nodes != null) {
             PathDataNode.nodesToPath(nodes, path);
@@ -254,7 +254,7 @@ public class PiPathParser {
          * @param node The source array of PathDataNode.
          * @param path The target Path object.
          */
-        public static void nodesToPath(PathDataNode[] node, PathInterpolator.Path path) {
+        public static void nodesToPath(PathDataNode[] node, JPath path) {
             float[] current = new float[4];
             char previousCommand = 'm';
             for (int i = 0; i < node.length; i++) {
@@ -280,7 +280,7 @@ public class PiPathParser {
             }
         }
 
-        private static void addCommand(PathInterpolator.Path path, float[] current,
+        private static void addCommand(JPath path, float[] current,
                 char previousCmd, char cmd, float[] val) {
 
             int incr = 2;
@@ -503,7 +503,7 @@ public class PiPathParser {
             current[3] = ctrlPointY;
         }
 
-        private static void drawArc(PathInterpolator.Path p,
+        private static void drawArc(JPath p,
                 float x0,
                 float y0,
                 float x1,
@@ -594,7 +594,7 @@ public class PiPathParser {
          * @param start The start angle of the arc on the ellipse
          * @param sweep The angle (positive or negative) of the sweep of the arc on the ellipse
          */
-        private static void arcToBezier(PathInterpolator.Path p,
+        private static void arcToBezier(JPath p,
                 double cx,
                 double cy,
                 double a,

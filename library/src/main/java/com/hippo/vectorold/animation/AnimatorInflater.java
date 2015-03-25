@@ -371,9 +371,9 @@ public class AnimatorInflater {
                 throw new InflateException(arrayObjectAnimator.getPositionDescription()
                         + " propertyXName or propertyYName is needed for PathData");
             } else {
-                Path path = PathParser.createPathFromPathData(pathData);
+                JPath path = JPathParser.createPathFromPathData(pathData);
                 float error = 0.5f * pixelSize; // max half a pixel error
-                PathKeyframes keyframeSet = KeyframeSet.ofPath(path, error);
+                PathKeyframes keyframeSet = new PathKeyframes(path, error);
                 Keyframes xKeyframes;
                 Keyframes yKeyframes;
                 if (getFloats) {
