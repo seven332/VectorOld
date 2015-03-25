@@ -2,6 +2,7 @@
 
     <string name="app_name">VectorOld Demo</string>
 
+    <string name="activity_vector">vector</string>
     <string name="activity_progress">progress</string>
 
       <string name="path_face_mouth_sad">

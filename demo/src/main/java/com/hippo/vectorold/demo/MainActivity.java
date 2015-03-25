@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.hippo.vectorold.content.VectorContext;
 import com.hippo.vectorold.demo.progress.ProgressActivity;
+import com.hippo.vectorold.demo.vector.VectorActivity;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -22,6 +23,7 @@ public class MainActivity extends ActionBarActivity {
         ListView list = (ListView) findViewById(R.id.list);
         list.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
                 new String[]{
+                        getString(R.string.activity_vector),
                         getString(R.string.activity_progress)
                 }));
 
@@ -32,6 +34,9 @@ public class MainActivity extends ActionBarActivity {
                 switch (position) {
                     default:
                     case 0:
+                        aClass = VectorActivity.class;
+                        break;
+                    case 1:
                         aClass = ProgressActivity.class;
                         break;
                 }
