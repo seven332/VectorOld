@@ -23,18 +23,15 @@ import java.lang.ref.WeakReference;
  */
 public class VectorResources extends Resources {
 
-    private static final String TAG = VectorResources.class.getSimpleName();
-
     private Context mContext;
     private Resources mBase;
 
     // These are protected by mAccessLock.
-
-    /*package*/ final Object mAccessLock = new Object();
-    /*package*/ final LongSparseArray<WeakReference<Drawable.ConstantState> > mDrawableCache
-            = new LongSparseArray<WeakReference<Drawable.ConstantState> >(0);
-    /*package*/ final LongSparseArray<WeakReference<Drawable.ConstantState> > mColorDrawableCache
-            = new LongSparseArray<WeakReference<Drawable.ConstantState> >(0);
+    final Object mAccessLock = new Object();
+    final LongSparseArray<WeakReference<Drawable.ConstantState> > mDrawableCache
+            = new LongSparseArray<>(0);
+    final LongSparseArray<WeakReference<Drawable.ConstantState> > mColorDrawableCache
+            = new LongSparseArray<>(0);
 
     public VectorResources(Context context, Resources res) {
         super(res.getAssets(), res.getDisplayMetrics(), res.getConfiguration());
@@ -76,43 +73,32 @@ public class VectorResources extends Resources {
             String file = value.string.toString();
 
             if (file.endsWith(".xml")) {
-                // Trace.traceBegin(Trace.TRACE_TAG_RESOURCES, file);
                 try {
                     XmlResourceParser rp = getXml(id);
-                    // XmlResourceParser rp = loadXmlResourceParser(
-                    //         file, id, value.assetCookie, "drawable");
                     dr = createDrawableFromXml(rp);
                     rp.close();
                 } catch (Exception e) {
-                    // Trace.traceEnd(Trace.TRACE_TAG_RESOURCES);
                     NotFoundException rnf = new NotFoundException(
                             "File " + file + " from drawable resource ID #0x"
                                     + Integer.toHexString(id));
                     rnf.initCause(e);
                     throw rnf;
                 }
-                // Trace.traceEnd(Trace.TRACE_TAG_RESOURCES);
 
             } else {
-                // Trace.traceBegin(Trace.TRACE_TAG_RESOURCES, file);
                 try {
                     InputStream is = openRawResource(id, value);
-                    //InputStream is = mAssets.openNonAsset(
-                    //        value.assetCookie, file, AssetManager.ACCESS_STREAMING);
-                    //                System.out.println("Opened file " + file + ": " + is);
                     dr = Drawable.createFromResourceStream(this, value, is,
                             file, null);
                     is.close();
                     //                System.out.println("Created stream: " + dr);
                 } catch (Exception e) {
-                    // Trace.traceEnd(Trace.TRACE_TAG_RESOURCES);
                     NotFoundException rnf = new NotFoundException(
                             "File " + file + " from drawable resource ID #0x"
                                     + Integer.toHexString(id));
                     rnf.initCause(e);
                     throw rnf;
                 }
-                // Trace.traceEnd(Trace.TRACE_TAG_RESOURCES);
             }
         }
         Drawable.ConstantState cs;
@@ -121,13 +107,10 @@ public class VectorResources extends Resources {
             cs = dr.getConstantState();
             if (cs != null) {
                 synchronized (mAccessLock) {
-                    //Log.i(TAG, "Saving cached drawable @ #" +
-                    //        Integer.toHexString(key.intValue())
-                    //        + " in " + this + ": " + cs);
                     if (isColorDrawable) {
-                        mColorDrawableCache.put(key, new WeakReference<Drawable.ConstantState>(cs));
+                        mColorDrawableCache.put(key, new WeakReference<>(cs));
                     } else {
-                        mDrawableCache.put(key, new WeakReference<Drawable.ConstantState>(cs));
+                        mDrawableCache.put(key, new WeakReference<>(cs));
                     }
                 }
             }
@@ -144,12 +127,8 @@ public class VectorResources extends Resources {
             if (wr != null) {   // we have the key
                 Drawable.ConstantState entry = wr.get();
                 if (entry != null) {
-                    //Log.i(TAG, "Returning cached drawable @ #" +
-                    //        Integer.toHexString(((Integer)key).intValue())
-                    //        + " in " + this + ": " + entry);
                     return entry.newDrawable(this);
-                }
-                else {  // our entry has been purged
+                } else {  // our entry has been purged
                     drawableCache.delete(key);
                 }
             }
@@ -200,5 +179,4 @@ public class VectorResources extends Resources {
         }
         return drawable;
     }
-
 }
