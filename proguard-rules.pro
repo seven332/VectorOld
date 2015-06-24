@@ -15,3 +15,10 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-keepclassmembers public class * extends com.hippo.vectorold.drawable.VectorDrawable.VGroup {
+    void set*(***);
+    *** get*();
+}
+
+-keep class android.content.res.VectorResources {*;}
