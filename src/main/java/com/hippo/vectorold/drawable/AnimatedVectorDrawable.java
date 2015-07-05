@@ -15,6 +15,7 @@
 package com.hippo.vectorold.drawable;
 
 import android.animation.Animator;
+import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -36,6 +37,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 /**
@@ -136,17 +138,18 @@ public class AnimatedVectorDrawable extends Drawable implements Animatable {
     private boolean mMutated;
 
     public AnimatedVectorDrawable() {
-        mAnimatedVectorState = new AnimatedVectorDrawableState(null);
+        this(null, null);
     }
 
     private AnimatedVectorDrawable(AnimatedVectorDrawableState state, Resources res) {
-        mAnimatedVectorState = new AnimatedVectorDrawableState(state);
+        mAnimatedVectorState = new AnimatedVectorDrawableState(state, res);
     }
 
     @Override
     public Drawable mutate() {
         if (!mMutated && super.mutate() == this) {
-            mAnimatedVectorState.mVectorDrawable.mutate();
+            mAnimatedVectorState = new AnimatedVectorDrawableState(
+                    mAnimatedVectorState, null);
             mMutated = true;
         }
         return this;
@@ -279,19 +282,37 @@ public class AnimatedVectorDrawable extends Drawable implements Animatable {
     }
 
     private static class AnimatedVectorDrawableState extends ConstantState {
+
+        private static Field mSetListenerField;
+
         int mChangingConfigurations;
         VectorDrawable mVectorDrawable;
         ArrayList<Animator> mAnimators;
         ArrayMap<Animator, String> mTargetNameMap;
 
-        public AnimatedVectorDrawableState(AnimatedVectorDrawableState copy) {
+        static {
+            try {
+                mSetListenerField = AnimatorSet.class.getDeclaredField("mSetListener");
+                mSetListenerField.setAccessible(true);
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public AnimatedVectorDrawableState(AnimatedVectorDrawableState copy,
+                Resources res) {
             if (copy != null) {
                 mChangingConfigurations = copy.mChangingConfigurations;
                 if (copy.mVectorDrawable != null) {
-                    mVectorDrawable = (VectorDrawable) copy.mVectorDrawable.getConstantState().newDrawable();
-                    mVectorDrawable.mutate();
-                    mVectorDrawable.setAllowCaching(false);
+                    final ConstantState cs = copy.mVectorDrawable.getConstantState();
+                    if (res != null) {
+                        mVectorDrawable = (VectorDrawable) cs.newDrawable(res);
+                    } else {
+                        mVectorDrawable = (VectorDrawable) cs.newDrawable();
+                    }
+                    mVectorDrawable = (VectorDrawable) mVectorDrawable.mutate();
                     mVectorDrawable.setBounds(copy.mVectorDrawable.getBounds());
+                    mVectorDrawable.setAllowCaching(false);
                 }
                 if (copy.mAnimators != null) {
                     final int numAnimators = copy.mAnimators.size();
@@ -300,6 +321,7 @@ public class AnimatedVectorDrawable extends Drawable implements Animatable {
                     for (int i = 0; i < numAnimators; ++i) {
                         Animator anim = copy.mAnimators.get(i);
                         Animator animClone = anim.clone();
+                        clearSetListener(animClone);
                         String targetName = copy.mTargetNameMap.get(anim);
                         Object targetObject = mVectorDrawable.getTargetByName(targetName);
                         animClone.setTarget(targetObject);
@@ -309,6 +331,18 @@ public class AnimatedVectorDrawable extends Drawable implements Animatable {
                 }
             } else {
                 mVectorDrawable = new VectorDrawable();
+            }
+        }
+
+        // WTF!!! Genymotion emulator keeps mSetListener after clone.
+        // I need to clear it by myself !!!
+        private void clearSetListener(Animator animator) {
+            if (mSetListenerField != null && animator instanceof AnimatorSet) {
+                try {
+                    mSetListenerField.set(animator, null);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
