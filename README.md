@@ -67,6 +67,9 @@ AnimatedVectorDrawable 的例子如下
 </animated-vector>
 ```
 
+# Build
+A package private API is uesd. Use this [android.jar](https://mega.co.nz/#!NpNlRDxY!fdpka-oqfHm2XoF1IDxrUFITn2xs5x3wQMT1jQ4TJT4) to build. The android.jar is base on API 22.
+
 # Thanks
 [MrVector](https://github.com/telly/MrVector)<br>
 这是一个与 VectorOld 类似的项目。VectorOld 参考了其中的某些用法与技巧。
