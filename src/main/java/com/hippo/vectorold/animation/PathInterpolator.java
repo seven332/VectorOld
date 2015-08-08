@@ -22,6 +22,7 @@ import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.InflateException;
 import android.view.animation.Interpolator;
@@ -215,5 +216,13 @@ public class PathInterpolator implements Interpolator {
         float startY = mY[startIndex];
         float endY = mY[endIndex];
         return startY + (fraction * (endY - startY));
+    }
+
+    public static Interpolator build(Path path) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return new android.view.animation.PathInterpolator(path);
+        } else {
+            return new PathInterpolator(path);
+        }
     }
 }
