@@ -33,7 +33,7 @@ public class VectorContext extends ContextWrapper {
     @Override
     public Resources getResources() {
         final Resources superResources = super.getResources();
-        if (mVectorResources == null || mVectorResources.isBase(superResources)) {
+        if (mVectorResources == null || !mVectorResources.isBase(superResources)) {
             mVectorResources = new VectorResources(this, superResources);
         }
         return mVectorResources;
