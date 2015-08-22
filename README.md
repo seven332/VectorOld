@@ -68,7 +68,7 @@ AnimatedVectorDrawable 的例子如下
 ```
 
 # Build
-A package private API is uesd. Use this [android.jar](https://mega.co.nz/#!NpNlRDxY!fdpka-oqfHm2XoF1IDxrUFITn2xs5x3wQMT1jQ4TJT4) to build. The android.jar is base on API 22.
+A package private API is uesd. Use this [android.jar](https://mega.nz/#F!889UCRQB!rjN-Abb38TMUwNGNg3i3-w) to build.
 
 # Thanks
 [MrVector](https://github.com/telly/MrVector)<br>
