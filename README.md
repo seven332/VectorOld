@@ -17,7 +17,7 @@ VectorDrawable 的例子如下
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:auto="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:targetApi="21">
+    tools:targetApi="21"
 
     auto:height="24dp"
     auto:width="24dp"
