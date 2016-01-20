@@ -1,3 +1,5 @@
+# DEPRECATED
+
 # VectorOld
 
 VectorDrawable，AnimatedVectorDrawable 和 PathInterpolator 的兼容库。API 14 以上应该都能用。<br>
